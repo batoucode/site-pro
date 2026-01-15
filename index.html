@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DesCode | Solutions Numériques Innovantes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables de thème */
+        :root {
+            /* Variables communes */
+            --transition: all 0.3s ease;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --radius: 20px;
+            
+            /* Thème sombre (par défaut) */
+            --primary: #0a192f;
+            --secondary: #00d4ff;
+            --accent: #ff6b35;
+            --accent-glow: rgba(255, 107, 53, 0.3);
+            --neon-blue: #00f3ff;
+            --neon-blue-glow: rgba(0, 243, 255, 0.4);
+            --neon-orange: #ff8c42;
+            --neon-orange-glow: rgba(255, 140, 66, 0.4);
+            --light: #f8f9fa;
+            --dark: #0a1520;
+            --success: #2ecc71;
+            --text: #ffffff;
+            --text-light: #b0b7c3;
+            --card-bg: rgba(15, 25, 45, 0.8);
+            --gradient-primary: linear-gradient(135deg, #0a192f 0%, #1a2c4d 100%);
+            --gradient-accent: linear-gradient(90deg, #ff6b35 0%, #ff8c42 100%);
+            --gradient-neon: linear-gradient(90deg, #00d4ff 0%, #00f3ff 100%);
+            --header-bg: rgba(10, 25, 47, 0.95);
+            --footer-bg: #0a1520;
+            --form-bg: rgba(255, 255, 255, 0.05);
+            --form-border: rgba(0, 212, 255, 0.2);
+        }
+
+        /* Thème clair */
+        [data-theme="light"] {
+            --primary: #ffffff;
+            --secondary: #0077cc;
+            --accent: #ff6b35;
+            --accent-glow: rgba(255, 107, 53, 0.2);
+            --neon-blue: #0099cc;
+            --neon-blue-glow: rgba(0, 153, 204, 0.2);
+            --neon-orange: #ff8c42;
+            --neon-orange-glow: rgba(255, 140, 66, 0.2);
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --text: #2c3e50;
+            --text-light: #7f8c8d;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --gradient-primary: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
+            --gradient-accent: linear-gradient(90deg, #ff6b35 0%, #ff8c42 100%);
+            --gradient-neon: linear-gradient(90deg, #0077cc 0%, #0099cc 100%);
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --footer-bg: #2c3e50;
+            --form-bg: rgba(0, 0, 0, 0.05);
+            --form-border: rgba(0, 119, 204, 0.2);
+        }
+
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--gradient-primary);
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Typographie */
+        h1, h2, h3, h4 {
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.8rem;
+            color: var(--text);
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+
+        h1 span {
+            background: var(--gradient-neon);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            color: var(--text);
+            text-align: center;
+            margin-bottom: 3.5rem;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 5px;
+            background: var(--gradient-accent);
+            border-radius: 3px;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        h3 {
+            font-size: 1.9rem;
+            color: var(--text);
+            margin-bottom: 1.2rem;
+        }
+
+        .highlight {
+            color: var(--neon-orange);
+            font-weight: 700;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        /* Boutons */
+        .btn {
+            display: inline-block;
+            padding: 16px 35px;
+            background: var(--gradient-accent);
+            color: white;
+            border-radius: 50px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-neon);
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn:hover:before {
+            opacity: 1;
+        }
+
+        .btn-neon {
+            background: var(--gradient-neon);
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-neon:hover {
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-neon:before {
+            background: var(--gradient-accent);
+        }
+
+        /* Header et Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--header-bg);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .logo span {
+            background: var(--gradient-neon);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-left: 5px;
+            text-shadow: 0 0 15px var(--neon-blue-glow);
+        }
+
+        .logo i {
+            margin-right: 12px;
+            color: var(--neon-orange);
+            font-size: 2.2rem;
+            filter: drop-shadow(0 0 8px var(--accent-glow));
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 35px;
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-accent);
+            border-radius: 3px;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--text);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        /* Toggle thème */
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+            cursor: pointer;
+        }
+
+        .theme-toggle input {
+            display: none;
+        }
+
+        .toggle-slider {
+            width: 50px;
+            height: 26px;
+            background: var(--gradient-accent);
+            border-radius: 50px;
+            position: relative;
+            transition: var(--transition);
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-slider:before {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: white;
+            top: 2px;
+            left: 2px;
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-toggle input:checked + .toggle-slider:before {
+            transform: translateX(24px);
+        }
+
+        .toggle-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8px;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--neon-blue);
+            margin-left: 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 200px 0 120px;
+            background: radial-gradient(circle at top right, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at bottom left, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+                        var(--gradient-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%2300d4ff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 650px;
+        }
+
+        .hero h1 {
+            margin-bottom: 25px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .hero-highlight {
+            color: var(--neon-orange);
+            font-weight: 700;
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            flex: 1;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .hero-visual img {
+            max-width: 100%;
+            border-radius: var(--radius);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2),
+                        0 0 0 1px rgba(0, 212, 255, 0.1),
+                        0 0 30px rgba(0, 212, 255, 0.1);
+            transform: perspective(1000px) rotateY(-10deg);
+            transition: var(--transition);
+        }
+
+        .hero-visual img:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .hero-visual:after {
+            content: '';
+            position: absolute;
+            top: 10%;
+            left: -10%;
+            width: 120%;
+            height: 80%;
+            background: var(--gradient-neon);
+            opacity: 0.1;
+            filter: blur(40px);
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 120px 0;
+            position: relative;
+            background: rgba(10, 25, 47, 0.05);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .services {
+            background: rgba(0, 119, 204, 0.05);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 45px 35px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid var(--form-border);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .service-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-accent);
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15),
+                        0 0 30px var(--neon-blue-glow);
+            border-color: var(--neon-blue);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            display: inline-block;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--neon-blue);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1),
+                        inset 0 0 0 1px rgba(0, 212, 255, 0.2);
+        }
+
+        [data-theme="light"] .service-icon {
+            background: rgba(0, 119, 204, 0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05),
+                        inset 0 0 0 1px rgba(0, 119, 204, 0.2);
+        }
+
+        .service-card h3 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .service-card p {
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+
+        .service-card a {
+            color: var(--neon-blue);
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
+
+        .service-card a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-accent);
+            transition: var(--transition);
+        }
+
+        .service-card a:hover:after {
+            width: 100%;
+        }
+
+        /* Section Processus */
+        .process {
+            padding: 120px 0;
+            background: rgba(15, 25, 45, 0.05);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .process {
+            background: rgba(255, 107, 53, 0.05);
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 25px;
+            position: relative;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            background: var(--gradient-accent);
+            color: white;
+            border-radius: 50%;
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number:after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.4;
+            filter: blur(10px);
+        }
+
+        .step h3 {
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+        }
+
+        .step p {
+            font-size: 1.05rem;
+        }
+
+        /* Section À Propos */
+        .about {
+            padding: 120px 0;
+            position: relative;
+            background: rgba(10, 25, 47, 0.05);
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .about {
+            background: rgba(255, 140, 66, 0.05);
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-visual {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-visual img {
+            width: 100%;
+            border-radius: var(--radius);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2),
+                        0 0 0 1px rgba(0, 212, 255, 0.1),
+                        0 0 30px rgba(255, 107, 53, 0.1);
+            transition: var(--transition);
+        }
+
+        .about-visual img:hover {
+            transform: scale(1.02);
+        }
+
+        .about-visual:after {
+            content: '';
+            position: absolute;
+            top: 10%;
+            right: -10%;
+            width: 120%;
+            height: 80%;
+            background: var(--gradient-accent);
+            opacity: 0.1;
+            filter: blur(40px);
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        /* Section Contact */
+        .contact {
+            padding: 120px 0;
+            background: rgba(15, 25, 45, 0.1);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        [data-theme="light"] .contact {
+            background: rgba(0, 119, 204, 0.05);
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 60px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--form-bg);
+            border-radius: 15px;
+            border-left: 4px solid var(--neon-orange);
+            transition: var(--transition);
+        }
+
+        .contact-info-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(10px);
+        }
+
+        [data-theme="light"] .contact-info-item:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-info-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.5rem;
+            color: var(--neon-blue);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="light"] .contact-info-icon {
+            background: rgba(0, 119, 204, 0.1);
+        }
+
+        .contact-detail {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-detail h4 {
+            color: var(--neon-orange);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .contact-detail p {
+            color: var(--text-light);
+            margin-bottom: 0;
+            font-size: 1.1rem;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 18px 20px;
+            border-radius: 15px;
+            border: 1px solid var(--form-border);
+            background: var(--form-bg);
+            color: var(--text);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 20px var(--neon-blue-glow);
+        }
+
+        [data-theme="light"] .form-control:focus {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--footer-bg);
+            color: white;
+            padding: 80px 0 30px;
+            position: relative;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 40px;
+            padding-right: 20px;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient-accent);
+            border-radius: 3px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--neon-blue);
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 25px;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(0, 212, 255, 0.1);
+            border-radius: 12px;
+            color: var(--neon-blue);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--gradient-neon);
+            color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px var(--neon-blue-glow);
+        }
+
+        .newsletter-form {
+            margin-top: 20px;
+        }
+
+        .newsletter-input {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: 1px solid var(--form-border);
+            background: var(--form-bg);
+            color: var(--text);
+            margin-bottom: 15px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-light);
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Menu mobile */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: var(--header-bg);
+            backdrop-filter: blur(20px);
+            z-index: 2000;
+            transition: var(--transition);
+            padding: 80px 30px 30px;
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .mobile-nav ul li {
+            margin: 0 0 25px 0;
+            width: 100%;
+        }
+
+        .mobile-nav ul li a {
+            font-size: 1.3rem;
+            padding: 10px 0;
+            display: block;
+            width: 100%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="light"] .mobile-nav ul li a {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-theme-toggle {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        [data-theme="light"] .mobile-theme-toggle {
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-theme-toggle span {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            font-size: 1.8rem;
+            color: var(--neon-blue);
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1100px) {
+            h1 {
+                font-size: 3.2rem;
+            }
+            
+            h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-container, .about-container {
+                flex-direction: column;
+            }
+            
+            .hero-content, .about-content {
+                margin-bottom: 70px;
+                text-align: center;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+            
+            .hero-visual, .about-visual {
+                max-width: 80%;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .step {
+                margin-bottom: 50px;
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .desktop-theme {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: flex;
+                align-items: center;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero {
+                padding: 160px 0 80px;
+            }
+            
+            .services, .process, .about, .contact {
+                padding: 80px 0;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-visual, .about-visual {
+                max-width: 100%;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-nav {
+                display: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 14px 30px;
+                font-size: 0.9rem;
+            }
+            
+            .service-card {
+                padding: 35px 25px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .contact-info-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-info-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .mobile-nav {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header avec navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                Des<span>Code</span>
+            </div>
+            <nav class="desktop-nav">
+                <ul id="navMenu">
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#process">Processus</a></li>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li class="desktop-theme">
+                        <div class="theme-toggle">
+                            <input type="checkbox" id="themeToggle">
+                            <label for="themeToggle" class="toggle-slider">
+                                <div class="toggle-icons">
+                                    <i class="fas fa-moon"></i>
+                                    <i class="fas fa-sun"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <div class="theme-toggle desktop-theme">
+                    <input type="checkbox" id="mobileThemeToggle">
+                    <label for="mobileThemeToggle" class="toggle-slider">
+                        <div class="toggle-icons">
+                            <i class="fas fa-moon"></i>
+                            <i class="fas fa-sun"></i>
+                        </div>
+                    </label>
+                </div>
+                <div class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu mobile -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="close-menu" id="closeMenu">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="#home">Accueil</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#process">Processus</a></li>
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-theme-toggle">
+            <span>Thème</span>
+            <div class="theme-toggle">
+                <input type="checkbox" id="mobileNavThemeToggle">
+                <label for="mobileNavThemeToggle" class="toggle-slider">
+                    <div class="toggle-icons">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Hero -->
+    <section class="hero" id="home">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Solutions <span>Numériques</span> Innovantes</h1>
+                <p>DesCode transforme votre présence numérique avec des <span class="hero-highlight">sites web professionnels</span>, applications sur mesure et <span class="hero-highlight">solutions d'IA</span> adaptées à vos besoins d'entreprise.</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn">Découvrir nos services</a>
+                    <a href="#contact" class="btn btn-neon">Nous contacter</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="DesCode - Solutions numériques">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2>Nos <span class="highlight">Services</span></h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Sites Personnels pour Professionnels</h3>
+                    <p>Création de sites web élégants et performants pour artisans et professionnels, mettant en valeur votre expertise et vos réalisations avec un design sur mesure.</p>
+                    <a href="#contact">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Applications Web & Mobile</h3>
+                    <p>Développement d'applications personnalisées adaptées à vos processus métier, avec des interfaces intuitives et des fonctionnalités avancées pour tous les appareils.</p>
+                    <a href="#contact">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Solutions d'IA Personnalisées</h3>
+                    <p>Déploiement d'intelligences artificielles sur mesure pour automatiser et optimiser vos processus métier et interactions informatiques. Simplifiez vos opérations.</p>
+                    <a href="#contact">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Processus -->
+    <section class="process" id="process">
+        <div class="container">
+            <h2>Notre <span class="highlight">Processus</span></h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Consultation</h3>
+                    <p>Nous analysons vos besoins et objectifs pour définir la meilleure stratégie numérique adaptée à votre secteur.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Conception</h3>
+                    <p>Nous créons des maquettes et prototypes pour visualiser le produit final et valider avec vous chaque détail.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Développement</h3>
+                    <p>Nous codons et intégrons toutes les fonctionnalités avec les technologies les plus adaptées à votre projet.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Livraison & Support</h3>
+                    <p>Nous déployons votre solution et assurons un suivi technique continu pour garantir sa performance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section À propos -->
+    <section class="about" id="about">
+        <div class="container about-container">
+            <div class="about-content">
+                <h2>Pourquoi Choisir <span class="highlight">DesCode</span>?</h2>
+                <p>Fondée par une équipe de passionnés du numérique, DesCode combine expertise technique et sens du design pour créer des solutions digitales qui répondent parfaitement à vos besoins professionnels.</p>
+                <p>Nous croyons en une approche personnalisée où chaque projet est unique. Que vous soyez artisan cherchant à développer votre présence en ligne, ou entreprise souhaitant optimiser ses processus avec l'IA, nous avons la solution adaptée.</p>
+                    <p>Notre engagement: livrer des produits de qualité, dans les délais convenus, avec un support réactif pour assurer la pérennité de votre investissement numérique.</p>
+                <a href="#contact" class="btn">Travaillons ensemble</a>
+            </div>
+            <div class="about-visual">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Équipe DesCode">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contactez-<span class="highlight">nous</span></h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Parlons de votre projet</h3>
+                    <p>Prêt à transformer votre présence numérique? Contactez-nous pour une consultation gratuite.</p>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Email</h4>
+                            <p>Acceuil.descode@ovh.fr</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Téléphone</h4>
+                            <p>07 78 11 46 32</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Localisation</h4>
+                            <p>Indre-et-Loire (37)<br>Région Centre-Val de Loire</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Horaires</h4>
+                            <p>Lun - Ven: 9h - 18h<br>Sur rendez-vous le weekend</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Envoyez-nous un message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nom complet</label>
+                            <input type="text" id="name" class="form-control" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Adresse email</label>
+                            <input type="email" id="email" class="form-control" placeholder="votre@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service intéressé</label>
+                            <select id="service" class="form-control" required>
+                                <option value="">Sélectionnez un service</option>
+                                <option value="site">Site personnel pour professionnel</option>
+                                <option value="app">Application web ou mobile</option>
+                                <option value="ia">Solution d'IA personnalisée</option>
+                                <option value="multiple">Plusieurs services</option>
+                                <option value="autre">Autre projet</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" rows="5" placeholder="Décrivez votre projet..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-neon">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <div class="logo">
+                        <i class="fas fa-code"></i>
+                        Des<span>Code</span>
+                    </div>
+                    <p>Votre partenaire pour des solutions numériques sur mesure, innovantes et performantes en Indre-et-Loire et partout en France.</p>
+                    <div class="social-links">
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Liens rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#process"><i class="fas fa-chevron-right"></i> Processus</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> À propos</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Nos services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Sites personnels</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Applications web/mobile</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Solutions d'IA</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Conseil numérique</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Maintenance & support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Coordonnées</h3>
+                    <div class="contact-detail">
+                        <p><i class="fas fa-envelope"></i> Acceuil.descode@ovh.fr</p>
+                        <p><i class="fas fa-phone"></i> 07 78 11 46 32</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Indre-et-Loire (37)</p>
+                    </div>
+                    <div class="newsletter-form">
+                        <p>Inscrivez-vous pour recevoir nos actualités et conseils numériques.</p>
+                        <input type="email" class="newsletter-input" placeholder="Votre email">
+                        <button type="submit" class="btn btn-neon" style="width: 100%;">S'inscrire</button>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 DesCode. Tous droits réservés. | <a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Gestion du thème
+        const themeToggle = document.getElementById('themeToggle');
+        const mobileThemeToggle = document.getElementById('mobileThemeToggle');
+        const mobileNavThemeToggle = document.getElementById('mobileNavThemeToggle');
+        const html = document.documentElement;
+        
+        // Vérifier le thème sauvegardé ou la préférence système
+        const savedTheme = localStorage.getItem('theme') || 
+                          (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        
+        // Appliquer le thème sauvegardé
+        html.setAttribute('data-theme', savedTheme);
+        
+        // Mettre à jour les toggles
+        if (savedTheme === 'light') {
+            themeToggle.checked = true;
+            mobileThemeToggle.checked = true;
+            mobileNavThemeToggle.checked = true;
+        }
+        
+        // Fonction pour changer de thème
+        function toggleTheme(isLight) {
+            if (isLight) {
+                html.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        
+        // Écouteurs d'événements pour les toggles
+        themeToggle.addEventListener('change', function() {
+            toggleTheme(this.checked);
+            mobileThemeToggle.checked = this.checked;
+            mobileNavThemeToggle.checked = this.checked;
+        });
+        
+        mobileThemeToggle.addEventListener('change', function() {
+            toggleTheme(this.checked);
+            themeToggle.checked = this.checked;
+            mobileNavThemeToggle.checked = this.checked;
+        });
+        
+        mobileNavThemeToggle.addEventListener('change', function() {
+            toggleTheme(this.checked);
+            themeToggle.checked = this.checked;
+            mobileThemeToggle.checked = this.checked;
+        });
+        
+        // Menu mobile
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMenu = document.getElementById('closeMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+        });
+        
+        closeMenu.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+        });
+        
+        // Fermer le menu en cliquant sur un lien
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+            });
+        });
+        
+        // Fermer le menu en cliquant en dehors
+        document.addEventListener('click', (e) => {
+            if (!mobileNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileNav.classList.remove('active');
+            }
+        });
+        
+        // Formulaire de contact
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Récupération des données du formulaire
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            // Simulation d'envoi
+            alert(`Merci ${name}! Votre message concernant "${getServiceName(service)}" a été envoyé. Nous vous répondrons à ${email} dans les plus brefs délais.`);
+            
+            // Réinitialisation du formulaire
+            contactForm.reset();
+        });
+        
+        function getServiceName(value) {
+            const services = {
+                'site': 'Site personnel pour professionnel',
+                'app': 'Application web ou mobile',
+                'ia': 'Solution d\'IA personnalisée',
+                'multiple': 'Plusieurs services',
+                'autre': 'Autre projet'
+            };
+            return services[value] || 'votre projet';
+        }
+        
+        // Animation du header au scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '15px 0';
+                header.style.boxShadow = '0 10px 30px rgba(0,0,0,0.2)';
+            } else {
+                header.style.padding = '20px 0';
+                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            }
+        });
+        
+        // Effet de surbrillance sur les sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observer les sections importantes
+        document.querySelectorAll('.service-card, .step, .about-content, .contact-info, .contact-form').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
