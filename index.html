@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DesCodes | Solutions Numériques Innovantes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Header avec navigation -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-code"></i>
+                Des<span>Codes</span>
+            </div>
+            <nav class="desktop-nav">
+                <ul id="navMenu">
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#process">Processus</a></li>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li class="desktop-theme">
+                        <div class="theme-toggle">
+                            <input type="checkbox" id="themeToggle">
+                            <label for="themeToggle" class="toggle-slider">
+                                <div class="toggle-icons">
+                                    <i class="fas fa-moon"></i>
+                                    <i class="fas fa-sun"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <div class="theme-toggle desktop-theme">
+                    <input type="checkbox" id="mobileThemeToggle">
+                    <label for="mobileThemeToggle" class="toggle-slider">
+                        <div class="toggle-icons">
+                            <i class="fas fa-moon"></i>
+                            <i class="fas fa-sun"></i>
+                        </div>
+                    </label>
+                </div>
+                <div class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu mobile -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="close-menu" id="closeMenu">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="#home">Accueil</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#process">Processus</a></li>
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-theme-toggle">
+            <span>Thème</span>
+            <div class="theme-toggle">
+                <input type="checkbox" id="mobileNavThemeToggle">
+                <label for="mobileNavThemeToggle" class="toggle-slider">
+                    <div class="toggle-icons">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Hero -->
+    <section class="hero" id="home">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Solutions <span>Numériques</span> Innovantes</h1>
+                <p>DesCodes transforme votre présence numérique avec des <span class="hero-highlight">sites web
+                        professionnels</span>, applications sur mesure et <span class="hero-highlight">solutions
+                        d'IA</span> adaptées à vos besoins d'entreprise.</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn">Découvrir nos services</a>
+                    <a href="#contact" class="btn btn-neon">Nous contacter</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80"
+                    alt="DesCodes - Solutions numériques">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2>Nos <span class="highlight">Services</span></h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Sites Personnels pour Professionnels</h3>
+                    <p>Création de sites web élégants et performants pour artisans et professionnels, mettant en valeur
+                        votre expertise et vos réalisations avec un design sur mesure.</p>
+                    <a href="#contact">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Applications Web & Mobile</h3>
+                    <p>Développement d'applications personnalisées adaptées à vos processus métier, avec des interfaces
+                        intuitives et des fonctionnalités avancées pour tous les appareils.</p>
+                    <a href="#contact">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Solutions d'IA Personnalisées</h3>
+                    <p>Déploiement d'intelligences artificielles sur mesure pour automatiser et optimiser vos processus
+                        métier et interactions informatiques. Simplifiez vos opérations.</p>
+                    <a href="#contact">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Processus -->
+    <section class="process" id="process">
+        <div class="container">
+            <h2>Notre <span class="highlight">Processus</span></h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Consultation</h3>
+                    <p>Nous analysons vos besoins et objectifs pour définir la meilleure stratégie numérique adaptée à
+                        votre secteur.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Conception</h3>
+                    <p>Nous créons des maquettes et prototypes pour visualiser le produit final et valider avec vous
+                        chaque détail.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Développement</h3>
+                    <p>Nous codons et intégrons toutes les fonctionnalités avec les technologies les plus adaptées à
+                        votre projet.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Livraison & Support</h3>
+                    <p>Nous déployons votre solution et assurons un suivi technique continu pour garantir sa
+                        performance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section À propos -->
+    <section class="about" id="about">
+        <div class="container about-container">
+            <div class="about-content">
+                <h2>Pourquoi Choisir <span class="highlight">DesCodes</span>?</h2>
+                <p>Après une reconversion professionnelle qui a transformé ma passion pour le numérique en véritable
+                    métier, j'ai créé DesCodes pour accompagner les professionnels dans leur transformation digitale.
+                </p>
+                <p>Fort d'une expertise technique solide et d'un sens du design affûté, je combine ces compétences pour
+                    créer des solutions sur mesure qui s'adaptent parfaitement à vos besoins spécifiques.</p>
+                <p>Je m'engage à vous fournir des solutions de qualité, respectant vos délais et votre budget, avec un
+                    suivi personnalisé pour garantir la réussite durable de votre projet numérique.</p>
+                <a href="#contact" class="btn">Travaillons ensemble</a>
+            </div>
+            <div class="about-visual">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                    alt="Équipe DesCodes">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contactez-<span class="highlight">nous</span></h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Parlons de votre projet</h3>
+                    <p>Prêt à transformer votre présence numérique? Contactez-nous pour une consultation gratuite.</p>
+
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Email</h4>
+                            <p>Acceuil.descode@ovh.fr</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Téléphone</h4>
+                            <p>07 78 11 46 32</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Localisation</h4>
+                            <p>Indre-et-Loire (37)<br>Région Centre-Val de Loire</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-detail">
+                            <h4>Horaires</h4>
+                            <p>Lun - Ven: 9h - 18h<br>Sur rendez-vous le weekend</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Envoyez-nous un message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nom complet</label>
+                            <input type="text" id="name" class="form-control" placeholder="Votre nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Adresse email</label>
+                            <input type="email" id="email" class="form-control" placeholder="votre@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service intéressé</label>
+                            <select id="service" class="form-control" required>
+                                <option value="">Sélectionnez un service</option>
+                                <option value="site">Site personnel pour professionnel</option>
+                                <option value="app">Application web ou mobile</option>
+                                <option value="ia">Solution d'IA personnalisée</option>
+                                <option value="multiple">Plusieurs services</option>
+                                <option value="autre">Autre projet</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" rows="5" placeholder="Décrivez votre projet..."
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-neon">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <div class="logo">
+                        <i class="fas fa-code"></i>
+                        Des<span>Codes</span>
+                    </div>
+                    <p>Votre partenaire pour des solutions numériques sur mesure, innovantes et performantes en
+                        Indre-et-Loire et partout en France.</p>
+                    <div class="social-links">
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Liens rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#process"><i class="fas fa-chevron-right"></i> Processus</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> À propos</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Nos services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Sites personnels</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Applications web/mobile</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Solutions d'IA</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Conseil numérique</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Maintenance & support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Coordonnées</h3>
+                    <div class="contact-detail">
+                        <p><i class="fas fa-envelope"></i> Acceuil.descode@ovh.fr</p>
+                        <p><i class="fas fa-phone"></i> 07 78 11 46 32</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Indre-et-Loire (37)</p>
+                    </div>
+                    <div class="newsletter-form">
+                        <p>Inscrivez-vous pour recevoir nos actualités et conseils numériques.</p>
+                        <input type="email" class="newsletter-input" placeholder="Votre email">
+                        <button type="submit" class="btn btn-neon" style="width: 100%;">S'inscrire</button>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 DesCodes. Tous droits réservés. | <a href="#">Mentions légales</a> | <a
+                        href="#">Politique de confidentialité</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
