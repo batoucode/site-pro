@@ -7,6 +7,12 @@
     <title>DesCodes | Solutions Numériques Innovantes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
 </head>
 
 <body>
@@ -21,6 +27,7 @@
                 <ul id="navMenu">
                     <li><a href="#home">Accueil</a></li>
                     <li><a href="#services">Services</a></li>
+                    <li><a href="pages_html/tarifs.html">Tarifs</a></li>
                     <li><a href="#process">Processus</a></li>
                     <li><a href="#about">À propos</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -62,6 +69,7 @@
         <ul>
             <li><a href="#home">Accueil</a></li>
             <li><a href="#services">Services</a></li>
+            <li><a href="tarifs.html">Tarifs</a></li>
             <li><a href="#process">Processus</a></li>
             <li><a href="#about">À propos</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -297,6 +305,7 @@
                     <ul class="footer-links">
                         <li><a href="#home"><i class="fas fa-chevron-right"></i> Accueil</a></li>
                         <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="pages_html/tarifs.html"><i class="fas fa-chevron-right"></i> Tarifs</a></li>
                         <li><a href="#process"><i class="fas fa-chevron-right"></i> Processus</a></li>
                         <li><a href="#about"><i class="fas fa-chevron-right"></i> À propos</a></li>
                         <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>

@@ -4,49 +4,61 @@ const mobileThemeToggle = document.getElementById('mobileThemeToggle');
 const mobileNavThemeToggle = document.getElementById('mobileNavThemeToggle');
 const html = document.documentElement;
 
-// Vérifier le thème sauvegardé ou la préférence système
-const savedTheme = localStorage.getItem('theme') || 
-                  (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-
-// Appliquer le thème sauvegardé
-html.setAttribute('data-theme', savedTheme);
-
-// Mettre à jour les toggles
-if (savedTheme === 'light') {
-    themeToggle.checked = true;
-    mobileThemeToggle.checked = true;
-    mobileNavThemeToggle.checked = true;
+// Fonction pour mettre à jour l'état visuel des toggles
+function updateToggles(isLight) {
+    if (themeToggle) themeToggle.checked = isLight;
+    if (mobileThemeToggle) mobileThemeToggle.checked = isLight;
+    if (mobileNavThemeToggle) mobileNavThemeToggle.checked = isLight;
 }
+
+// Fonction pour synchroniser le thème depuis localStorage
+function syncTheme() {
+    const currentTheme = localStorage.getItem('theme') ||
+        (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    html.setAttribute('data-theme', currentTheme);
+    updateToggles(currentTheme === 'light');
+}
+
+// Initialiser au chargement
+syncTheme();
 
 // Fonction pour changer de thème
 function toggleTheme(isLight) {
-    if (isLight) {
-        html.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-    } else {
-        html.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-    }
+    const newTheme = isLight ? 'light' : 'dark';
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateToggles(isLight);
 }
 
+// Écouter les changements depuis d'autres onglets
+window.addEventListener('storage', (e) => {
+    if (e.key === 'theme') {
+        syncTheme();
+    }
+});
+
+// Forcer la synchronisation quand on revient sur l'onglet
+window.addEventListener('pageshow', syncTheme);
+window.addEventListener('focus', syncTheme);
+
 // Écouteurs d'événements pour les toggles
-themeToggle.addEventListener('change', function() {
-    toggleTheme(this.checked);
-    mobileThemeToggle.checked = this.checked;
-    mobileNavThemeToggle.checked = this.checked;
-});
+if (themeToggle) {
+    themeToggle.addEventListener('change', function () {
+        toggleTheme(this.checked);
+    });
+}
 
-mobileThemeToggle.addEventListener('change', function() {
-    toggleTheme(this.checked);
-    themeToggle.checked = this.checked;
-    mobileNavThemeToggle.checked = this.checked;
-});
+if (mobileThemeToggle) {
+    mobileThemeToggle.addEventListener('change', function () {
+        toggleTheme(this.checked);
+    });
+}
 
-mobileNavThemeToggle.addEventListener('change', function() {
-    toggleTheme(this.checked);
-    themeToggle.checked = this.checked;
-    mobileThemeToggle.checked = this.checked;
-});
+if (mobileNavThemeToggle) {
+    mobileNavThemeToggle.addEventListener('change', function () {
+        toggleTheme(this.checked);
+    });
+}
 
 // Menu mobile
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -77,21 +89,23 @@ document.addEventListener('click', (e) => {
 
 // Formulaire de contact
 const contactForm = document.getElementById('contactForm');
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Récupération des données du formulaire
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const service = document.getElementById('service').value;
-    const message = document.getElementById('message').value;
-    
-    // Simulation d'envoi
-    alert(`Merci ${name}! Votre message concernant "${getServiceName(service)}" a été envoyé. Nous vous répondrons à ${email} dans les plus brefs délais.`);
-    
-    // Réinitialisation du formulaire
-    contactForm.reset();
-});
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Récupération des données du formulaire
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const service = document.getElementById('service').value;
+        const message = document.getElementById('message').value;
+
+        // Simulation d'envoi
+        alert(`Merci ${name}! Votre message concernant "${getServiceName(service)}" a été envoyé. Nous vous répondrons à ${email} dans les plus brefs délais.`);
+
+        // Réinitialisation du formulaire
+        contactForm.reset();
+    });
+}
 
 function getServiceName(value) {
     const services = {
@@ -132,7 +146,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observer les sections importantes
-document.querySelectorAll('.service-card, .step, .about-content, .contact-info, .contact-form').forEach(el => {
+document.querySelectorAll('.service-card, .step, .about-content, .contact-info, .contact-form, .pricing-card, .secondary-card, .alc-item').forEach(el => {
     el.style.opacity = 0;
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
