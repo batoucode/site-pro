@@ -798,6 +798,10 @@ footer {
     transition: var(--transition);
 }
 
+footer .logo {
+    color: #ffffff !important;
+}
+
 .footer-container {
     display: flex;
     flex-wrap: wrap;
@@ -1025,6 +1029,11 @@ footer {
     .mobile-menu {
         display: flex;
         align-items: center;
+    }
+
+    /* Masquer le toggle thème du header sur mobile car il est dans le menu latéral */
+    .mobile-menu .theme-toggle {
+        display: none;
     }
 
     .mobile-menu-btn {
