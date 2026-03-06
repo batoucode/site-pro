@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | DesCodes - Nos Réalisations</title>
+    <meta name="description" content="Découvrez les réalisations de DesCodes : sites vitrines, applications web et solutions numériques créés pour nos clients.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/portfolio.css">
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+</head>
+
+<body>
+    <!-- Header avec navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="../index.html" class="logo">
+                <i class="fas fa-code"></i>
+                Des<span>Codes</span>
+            </a>
+            <nav class="desktop-nav">
+                <ul id="navMenu">
+                    <li><a href="../index.html#home">Accueil</a></li>
+                    <li><a href="../index.html#services">Services</a></li>
+                    <li><a href="tarifs.html">Tarifs</a></li>
+                    <li><a href="portfolio.html" class="active">Portfolio</a></li>
+                    <li><a href="../index.html#process">Processus</a></li>
+                    <li><a href="../index.html#about">À propos</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                    <li class="desktop-theme">
+                        <div class="theme-toggle">
+                            <input type="checkbox" id="themeToggle">
+                            <label for="themeToggle" class="toggle-slider">
+                                <div class="toggle-icons">
+                                    <i class="fas fa-moon"></i>
+                                    <i class="fas fa-sun"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <div class="theme-toggle desktop-theme">
+                    <input type="checkbox" id="mobileThemeToggle">
+                    <label for="mobileThemeToggle" class="toggle-slider">
+                        <div class="toggle-icons">
+                            <i class="fas fa-moon"></i>
+                            <i class="fas fa-sun"></i>
+                        </div>
+                    </label>
+                </div>
+                <div class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu mobile -->
+    <div class="mobile-nav" id="mobileNav">
+        <button class="close-menu" id="closeMenu">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul>
+            <li><a href="../index.html#home">Accueil</a></li>
+            <li><a href="../index.html#services">Services</a></li>
+            <li><a href="tarifs.html">Tarifs</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="../index.html#process">Processus</a></li>
+            <li><a href="../index.html#about">À propos</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-theme-toggle">
+            <span>Thème</span>
+            <div class="theme-toggle">
+                <input type="checkbox" id="mobileNavThemeToggle">
+                <label for="mobileNavThemeToggle" class="toggle-slider">
+                    <div class="toggle-icons">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </div>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Portfolio -->
+    <section class="portfolio-hero">
+        <div class="portfolio-hero-bg"></div>
+        <div class="container">
+            <div class="portfolio-hero-content">
+                <div class="portfolio-badge">
+                    <i class="fas fa-star"></i> Nos Réalisations
+                </div>
+                <h1>Notre <span>Portfolio</span></h1>
+                <p>Chaque projet est une histoire unique. Découvrez les sites et applications que nous avons créés pour nos clients, reflets de leur passion et de leur savoir‑faire.</p>
+                <div class="portfolio-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="counterSites">0</span>
+                        <span class="stat-label">Sites livrés</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="counterClients">0</span>
+                        <span class="stat-label">Clients satisfaits</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="counterYears">0</span>
+                        <span class="stat-label">Ans d'expérience</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filtres -->
+    <section class="portfolio-filters-section">
+        <div class="container">
+            <div class="filter-tabs" id="filterTabs">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th"></i> Tous les projets
+                </button>
+                <button class="filter-btn" data-filter="vitrine">
+                    <i class="fas fa-store"></i> Site Vitrine
+                </button>
+                <button class="filter-btn" data-filter="app">
+                    <i class="fas fa-mobile-alt"></i> Application
+                </button>
+                <button class="filter-btn" data-filter="ecommerce">
+                    <i class="fas fa-shopping-cart"></i> E-commerce
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galerie des projets -->
+    <section class="portfolio-gallery">
+        <div class="container">
+            <div class="projects-grid" id="projectsGrid">
+
+                <!-- Projet 1 : Ainoa Coiffure -->
+                <article class="project-card" data-category="vitrine" id="card-ainoa">
+                    <div class="project-preview">
+                        <div class="preview-browser">
+                            <div class="browser-bar">
+                                <div class="browser-dots">
+                                    <span class="dot dot-red"></span>
+                                    <span class="dot dot-yellow"></span>
+                                    <span class="dot dot-green"></span>
+                                </div>
+                                <div class="browser-url">
+                                    <i class="fas fa-lock"></i>
+                                    <span>anne373.github.io/Site-Ainoa</span>
+                                </div>
+                            </div>
+                            <div class="preview-iframe-wrapper">
+                                <iframe
+                                    src="https://anne373.github.io/Site-Ainoa/"
+                                    title="Ainoa Coiffure – Site vitrine"
+                                    loading="lazy"
+                                    sandbox="allow-scripts allow-same-origin allow-popups"
+                                    scrolling="no">
+                                </iframe>
+                                <div class="preview-overlay" onclick="openModal('ainoa')">
+                                    <div class="overlay-btn">
+                                        <i class="fas fa-expand"></i> Voir le projet
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-info">
+                        <div class="project-header">
+                            <div class="project-type">
+                                <i class="fas fa-store"></i> Site Vitrine
+                            </div>
+                            <div class="project-year">2024</div>
+                        </div>
+                        <h3>Aïnoa Coiffure</h3>
+                        <p>Site vitrine élégant pour un salon de coiffure avec galerie de créations, présentation du Head SPA et prise de rendez-vous en ligne.</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Design</span>
+                            <span class="tag">SEO</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://anne373.github.io/Site-Ainoa/" target="_blank" rel="noopener" class="btn btn-neon project-link">
+                                <i class="fas fa-external-link-alt"></i> Visiter le site
+                            </a>
+                            <button class="btn project-detail-btn" onclick="openModal('ainoa')">
+                                <i class="fas fa-search-plus"></i> Détails
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Projet 2 : DesCodes Site Pro -->
+                <article class="project-card" data-category="vitrine" id="card-descodes">
+                    <div class="project-preview">
+                        <div class="preview-browser">
+                            <div class="browser-bar">
+                                <div class="browser-dots">
+                                    <span class="dot dot-red"></span>
+                                    <span class="dot dot-yellow"></span>
+                                    <span class="dot dot-green"></span>
+                                </div>
+                                <div class="browser-url">
+                                    <i class="fas fa-lock"></i>
+                                    <span>batoucode.github.io/site-pro</span>
+                                </div>
+                            </div>
+                            <div class="preview-iframe-wrapper">
+                                <iframe
+                                    src="https://batoucode.github.io/site-pro/index.html"
+                                    title="DesCodes – Site Pro"
+                                    loading="lazy"
+                                    sandbox="allow-scripts allow-same-origin allow-popups"
+                                    scrolling="no">
+                                </iframe>
+                                <div class="preview-overlay" onclick="openModal('descodes')">
+                                    <div class="overlay-btn">
+                                        <i class="fas fa-expand"></i> Voir le projet
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-info">
+                        <div class="project-header">
+                            <div class="project-type">
+                                <i class="fas fa-laptop-code"></i> Site Complet
+                            </div>
+                            <div class="project-year">2025</div>
+                        </div>
+                        <h3>DesCodes – Site Pro</h3>
+                        <p>Site professionnel complet avec présentation des services, tarification, processus de travail, section À propos et formulaire de contact.</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Responsive</span>
+                            <span class="tag">Dark Mode</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="https://batoucode.github.io/site-pro/index.html" target="_blank" rel="noopener" class="btn btn-neon project-link">
+                                <i class="fas fa-external-link-alt"></i> Visiter le site
+                            </a>
+                            <button class="btn project-detail-btn" onclick="openModal('descodes')">
+                                <i class="fas fa-search-plus"></i> Détails
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Projet placeholder "à venir" -->
+                <article class="project-card project-coming-soon" data-category="app" id="card-soon">
+                    <div class="project-preview">
+                        <div class="preview-browser">
+                            <div class="browser-bar">
+                                <div class="browser-dots">
+                                    <span class="dot dot-red"></span>
+                                    <span class="dot dot-yellow"></span>
+                                    <span class="dot dot-green"></span>
+                                </div>
+                                <div class="browser-url">
+                                    <i class="fas fa-lock"></i>
+                                    <span>Projet en cours...</span>
+                                </div>
+                            </div>
+                            <div class="preview-iframe-wrapper coming-soon-preview">
+                                <div class="coming-soon-content">
+                                    <i class="fas fa-rocket coming-soon-icon"></i>
+                                    <p>Projet en cours de développement</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <div class="project-header">
+                            <div class="project-type">
+                                <i class="fas fa-mobile-alt"></i> Application Web
+                            </div>
+                            <div class="project-year badge-soon">Bientôt</div>
+                        </div>
+                        <h3>Prochain projet</h3>
+                        <p>Un nouveau projet ambitieux est en développement. Contactez-nous pour en savoir plus ou pour démarrer votre propre projet.</p>
+                        <div class="project-tags">
+                            <span class="tag tag-dim">À définir</span>
+                        </div>
+                        <div class="project-actions">
+                            <a href="../index.html#contact" class="btn btn-neon project-link">
+                                <i class="fas fa-paper-plane"></i> Démarrer un projet
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="portfolio-cta">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-text">
+                    <h2>Votre projet, <span class="highlight">notre prochaine réalisation</span></h2>
+                    <p>Prêt à rejoindre notre portfolio ? Discutons de votre projet lors d'une consultation gratuite.</p>
+                </div>
+                <div class="cta-buttons">
+                    <a href="../index.html#contact" class="btn btn-neon">
+                        <i class="fas fa-paper-plane"></i> Démarrer mon projet
+                    </a>
+                    <a href="tarifs.html" class="btn">
+                        <i class="fas fa-tags"></i> Voir les tarifs
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Projet -->
+    <div class="project-modal" id="projectModal">
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body" id="modalBody">
+                <!-- Contenu dynamique injecté par JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <div class="logo">
+                        <i class="fas fa-code"></i>
+                        Des<span>Codes</span>
+                    </div>
+                    <p>Votre partenaire pour des solutions numériques sur mesure, innovantes et performantes en
+                        Indre-et-Loire et partout en France.</p>
+                    <div class="social-links">
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Liens rapides</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html#home"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+                        <li><a href="../index.html#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="tarifs.html"><i class="fas fa-chevron-right"></i> Tarifs</a></li>
+                        <li><a href="portfolio.html"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                        <li><a href="../index.html#about"><i class="fas fa-chevron-right"></i> À propos</a></li>
+                        <li><a href="../index.html#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Nos services</h3>
+                    <ul class="footer-links">
+                        <li><a href="../index.html#services"><i class="fas fa-chevron-right"></i> Sites personnels</a></li>
+                        <li><a href="../index.html#services"><i class="fas fa-chevron-right"></i> Applications web/mobile</a></li>
+                        <li><a href="../index.html#services"><i class="fas fa-chevron-right"></i> Solutions d'IA</a></li>
+                        <li><a href="../index.html#services"><i class="fas fa-chevron-right"></i> Conseil numérique</a></li>
+                        <li><a href="../index.html#services"><i class="fas fa-chevron-right"></i> Maintenance & support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Coordonnées</h3>
+                    <div class="contact-detail">
+                        <p><i class="fas fa-envelope"></i> Acceuil.descode@ovh.fr</p>
+                        <p><i class="fas fa-phone"></i> 07 78 11 46 32</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Indre-et-Loire (37)</p>
+                    </div>
+                    <div class="newsletter-form">
+                        <p>Inscrivez-vous pour recevoir nos actualités et conseils numériques.</p>
+                        <input type="email" class="newsletter-input" placeholder="Votre email">
+                        <button type="submit" class="btn btn-neon" style="width: 100%;">S'inscrire</button>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 DesCodes. Tous droits réservés. | <a href="#">Mentions légales</a> | <a
+                        href="#">Politique de confidentialité</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/portfolio.js"></script>
+</body>
+
+</html>
