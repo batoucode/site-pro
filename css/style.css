@@ -350,6 +350,30 @@ nav ul li a:hover:after {
     margin-left: 20px;
 }
 
+/* Hero geo badge */
+.hero-geo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--neon-blue);
+    background: rgba(0, 212, 255, 0.08);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 50px;
+    padding: 7px 20px;
+    margin-bottom: 22px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: none;
+}
+
+[data-theme="light"] .hero-geo {
+    background: rgba(0, 119, 204, 0.08);
+    border-color: rgba(0, 119, 204, 0.3);
+    color: var(--secondary);
+}
+
 /* Hero Section */
 .hero {
     padding: 200px 0 120px;
@@ -385,8 +409,9 @@ nav ul li a:hover:after {
 }
 
 .hero h1 {
-    margin-bottom: 25px;
-    line-height: 1.1;
+    font-size: 3.4rem;
+    margin-bottom: 28px;
+    line-height: 1.15;
 }
 
 .hero p {
