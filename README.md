@@ -56,7 +56,7 @@ Le projet est conçu en **Vanilla JS/CSS**, il ne nécessite aucun compilateur o
 ## 📞 Contact
 
 - 📧 **Email** : Acceuil.descode@ovh.fr
-- 📞 **Téléphone** : 07 ** ** ** 32
+- 📞 **Téléphone** : 07 78 ** ** 32
 - 📍 **Localisation** : Indre-et-Loire (37)
 
 ---
