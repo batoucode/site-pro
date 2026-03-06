@@ -355,17 +355,20 @@ nav ul li a:hover:after {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 700;
     color: var(--neon-blue);
     background: rgba(0, 212, 255, 0.08);
     border: 1px solid rgba(0, 212, 255, 0.3);
     border-radius: 50px;
-    padding: 7px 20px;
-    margin-bottom: 22px;
+    padding: 6px 16px;
+    margin-top: 12px;
+    margin-bottom: 0;
+    margin-left: auto;
     letter-spacing: 1px;
     text-transform: uppercase;
     text-shadow: none;
+    align-self: flex-end;
 }
 
 [data-theme="light"] .hero-geo {
@@ -396,16 +399,21 @@ nav ul li a:hover:after {
 }
 
 .hero-container {
-    display: flex;
-    align-items: center;
-    gap: 60px;
+    display: grid;
+    grid-template-columns: 50% 44%;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "content visual"
+        "buttons visual";
+    column-gap: 60px;
+    row-gap: 32px;
+    align-items: start;
     position: relative;
     z-index: 1;
 }
 
 .hero-content {
-    flex: 0 0 50%;
-    max-width: 50%;
+    grid-area: content;
 }
 
 .hero h1 {
@@ -420,7 +428,7 @@ nav ul li a:hover:after {
 
 .hero p {
     font-size: 1.1rem;
-    margin-bottom: 36px;
+    margin-bottom: 0;
     color: var(--text-light);
     line-height: 1.75;
 }
@@ -432,14 +440,17 @@ nav ul li a:hover:after {
 }
 
 .hero-buttons {
+    grid-area: buttons;
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    align-self: start;
 }
 
 .hero-visual {
-    flex: 0 0 44%;
-    max-width: 44%;
+    grid-area: visual;
+    display: flex;
+    flex-direction: column;
     position: relative;
 }
 
@@ -1019,22 +1030,43 @@ footer .logo {
         font-size: 2.5rem;
     }
 
-    .hero-container,
+    .hero-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-content {
+        order: 1;
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    .hero-visual {
+        order: 2;
+        max-width: 80%;
+        margin-top: 40px;
+    }
+
+    .hero-buttons {
+        order: 3;
+        justify-content: center;
+        margin-top: 32px;
+    }
+
+    .hero-geo {
+        margin-left: auto;
+    }
+
     .about-container {
         flex-direction: column;
     }
 
-    .hero-content,
     .about-content {
         margin-bottom: 70px;
         text-align: center;
     }
 
-    .hero-buttons {
-        justify-content: center;
-    }
-
-    .hero-visual,
     .about-visual {
         max-width: 80%;
     }
@@ -1088,7 +1120,6 @@ footer .logo {
         font-size: 2rem;
     }
 
-    .hero-visual,
     .about-visual {
         max-width: 100%;
     }
