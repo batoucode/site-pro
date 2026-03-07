@@ -260,15 +260,16 @@ nav ul {
 }
 
 nav ul li {
-    margin-left: 35px;
+    margin-left: 22px;
 }
 
 nav ul li a {
     color: var(--text-light);
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 0.98rem;
     position: relative;
     padding: 5px 0;
+    white-space: nowrap;
 }
 
 nav ul li a:after {
